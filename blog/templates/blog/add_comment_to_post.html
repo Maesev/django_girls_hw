@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% if is_reply %}
+        <h2>Ответить на комментарий</h2>
+    {% else %}
+        <h2>Добавить комментарий</h2>
+    {% endif %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Отправить</button>
+    </form>
+{% endblock %}

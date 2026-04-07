@@ -1,0 +1,10 @@
+<div class="comment-node">
+    <div class="date">⌚ {{ comment.created_date|date:"d M Y, H:i" }}</div>
+    <strong>👤 {{ comment.author }}</strong>
+    <p style="margin-top: 5px; margin-bottom: 5px;">{{ comment.text|linebreaksbr }}</p>
+    <a class="comment-reply-btn" href="{% url 'reply_to_comment' pk=comment.pk %}">↪ Ответить</a>
+    
+    {% for reply in comment.replies.all %}
+        {% include 'blog/comment_node.html' with comment=reply %}
+    {% endfor %}
+</div>
